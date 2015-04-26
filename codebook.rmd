@@ -1,0 +1,445 @@
+---
+title: "Codebook"
+author: "Andrew W. Hill"
+date: "April 26, 2015"
+output:
+  pdf_document: default
+  html_document:
+    keep_md: yes
+---
+
+## Project Description
+This project takes a large dataset and reduces it to a tidier dataset, describing the averages of sensors collected per user per action.
+
+##Study design and data processing
+The initial data is filtered to include only averages and standard deviations, which are then averaged per user per action.  This reduces the dataset from 10299x563 to 180x81.
+
+###Collection of the raw data
+Data was collected by Anguita et al. [1] at Università degli Studi di Genova, whose original notes are as follows:
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details. 
+
+###Guide to create the tidy data file
+1. Download/clone the github project.
+2. Download the dataset from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip and expand the data directly into the source directory.
+3. source("run_analysis.R")
+4. The new tidy dataset will be written out as "awhill_summary.txt", and the filtered (but unaveraged) data will be available as merged_set in the R environment.
+
+###Cleaning of the data
+See README.md, included in this directory.
+
+##Description of the variables in the awhill_summary.txt file
+This dataset is 180 observations of 81 variables.
+Variables present: Subject, Activity, tBodyAcc-mean()-X, tBodyAcc-mean()-Y, tBodyAcc-mean()-Z, tBodyAcc-std()-X, tBodyAcc-std()-Y, tBodyAcc-std()-Z, tGravityAcc-mean()-X, tGravityAcc-mean()-Y, tGravityAcc-mean()-Z, tGravityAcc-std()-X, tGravityAcc-std()-Y, tGravityAcc-std()-Z, tBodyAccJerk-mean()-X, tBodyAccJerk-mean()-Y, tBodyAccJerk-mean()-Z, tBodyAccJerk-std()-X, tBodyAccJerk-std()-Y, tBodyAccJerk-std()-Z, tBodyGyro-mean()-X, tBodyGyro-mean()-Y, tBodyGyro-mean()-Z, tBodyGyro-std()-X, tBodyGyro-std()-Y, tBodyGyro-std()-Z, tBodyGyroJerk-mean()-X, tBodyGyroJerk-mean()-Y, tBodyGyroJerk-mean()-Z, tBodyGyroJerk-std()-X, tBodyGyroJerk-std()-Y, tBodyGyroJerk-std()-Z, tBodyAccMag-mean(), tBodyAccMag-std(), tGravityAccMag-mean(), tGravityAccMag-std(), tBodyAccJerkMag-mean(), tBodyAccJerkMag-std(), tBodyGyroMag-mean(), tBodyGyroMag-std(), tBodyGyroJerkMag-mean(), tBodyGyroJerkMag-std(), fBodyAcc-mean()-X, fBodyAcc-mean()-Y, fBodyAcc-mean()-Z, fBodyAcc-std()-X, fBodyAcc-std()-Y, fBodyAcc-std()-Z, fBodyAcc-meanFreq()-X, fBodyAcc-meanFreq()-Y, fBodyAcc-meanFreq()-Z, fBodyAccJerk-mean()-X, fBodyAccJerk-mean()-Y, fBodyAccJerk-mean()-Z, fBodyAccJerk-std()-X, fBodyAccJerk-std()-Y, fBodyAccJerk-std()-Z, fBodyAccJerk-meanFreq()-X, fBodyAccJerk-meanFreq()-Y, fBodyAccJerk-meanFreq()-Z, fBodyGyro-mean()-X, fBodyGyro-mean()-Y, fBodyGyro-mean()-Z, fBodyGyro-std()-X, fBodyGyro-std()-Y, fBodyGyro-std()-Z, fBodyGyro-meanFreq()-X, fBodyGyro-meanFreq()-Y, fBodyGyro-meanFreq()-Z, fBodyAccMag-mean(), fBodyAccMag-std(), fBodyAccMag-meanFreq(), fBodyBodyAccJerkMag-mean(), fBodyBodyAccJerkMag-std(), fBodyBodyAccJerkMag-meanFreq(), fBodyBodyGyroMag-mean(), fBodyBodyGyroMag-std(), fBodyBodyGyroMag-meanFreq(), fBodyBodyGyroJerkMag-mean(), fBodyBodyGyroJerkMag-std(), fBodyBodyGyroJerkMag-meanFreq()
+
+###Subject
+Class: integer
+
+Range: 1-30
+
+Indicates the subject number of the observation.
+
+###Activity
+Class: factor
+
+Levels: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
+
+Indicates the particular activity under observation.
+
+###tBodyAcc-mean()-X
+Class: number
+
+Mean time-domain body acceleration, X-dimension
+
+###tBodyAcc-mean()-Y
+Class: number
+
+Mean time-domain body acceleration, Y-dimension
+
+###tBodyAcc-mean()-Z
+Class: number
+
+Mean time-domain body acceleration, Z-dimension
+
+###tBodyAcc-std()-X
+Class: number
+
+Standard deviation of time-domain body acceleration, X-dimension
+
+###tBodyAcc-std()-Y
+Class: number
+
+Standard deviation of time-domain body acceleration, Y-dimension
+
+###tBodyAcc-std()-Z
+Class: number
+
+Standard deviation of time-domain body acceleration, Z-dimension
+
+###tGravityAcc-mean()-X
+Class: number
+
+Mean time-domain gravitational acceleration, X-dimension
+
+###tGravityAcc-mean()-Y
+Class: number
+
+Mean time-domain gravitational acceleration, Y-dimension
+
+###tGravityAcc-mean()-Z
+Class: number
+
+Mean time-domain gravitational acceleration, Z-dimension
+
+###tGravityAcc-std()-X
+Class: number
+
+Standard deviation of time-domain gravitational acceleration, X-dimension
+
+###tGravityAcc-std()-Y
+Class: number
+
+Standard deviation of time-domain gravitational acceleration, Y-dimension
+
+###tGravityAcc-std()-Z
+Class: number
+
+Standard deviation of time-domain gravitational acceleration, Z-dimension
+
+###tBodyAccJerk-mean()-X
+Class: number
+
+Mean time-domain body jerk acceleration, X-dimension
+
+###tBodyAccJerk-mean()-Y
+Class: number
+
+Mean time-domain body jerk acceleration, Y-dimension
+
+###tBodyAccJerk-mean()-Z
+Class: number
+
+Mean time-domain body jerk acceleration, Z-dimension
+
+###tBodyAccJerk-std()-X
+Class: number
+
+Standard deviation of time-domain body jerk acceleration, X-dimension
+
+###tBodyAccJerk-std()-Y
+Class: number
+
+Standard deviation of time-domain body jerk acceleration, Y-dimension
+
+###tBodyAccJerk-std()-Z
+Class: number
+
+Standard deviation of time-domain body jerk acceleration, Z-dimension
+
+###tBodyGyro-mean()-X
+Class: number
+
+Mean time-domain body gyro reading, X-dimension
+
+###tBodyGyro-mean()-Y
+Class: number
+
+Mean time-domain body gyro reading, Y-dimension
+
+###tBodyGyro-mean()-Z
+Class: number
+
+Mean time-domain body gyro reading, Z-dimension
+
+###tBodyGyro-std()-X
+Class: number
+
+Standard deviation of time-domain body gyro reading, X-dimension
+
+###tBodyGyro-std()-Y
+Class: number
+
+Standard deviation of time-domain body gyro reading, Y-dimension
+
+###tBodyGyro-std()-Z
+Class: number
+
+Standard deviation of time-domain body gyro reading, Z-dimension
+
+###tBodyGyroJerk-mean()-X
+Class: number
+
+Standard deviation of time-domain body jerk gyro reading, X-dimension
+
+###tBodyGyroJerk-mean()-Y
+Class: number
+
+Standard deviation of time-domain body jerk gyro reading, Y-dimension
+
+###tBodyGyroJerk-mean()-Z
+Class: number
+
+Standard deviation of time-domain body jerk gyro reading, Z-dimension
+
+###tBodyGyroJerk-std()-X
+Class: number
+
+Standard deviation of time-domain body jerk gyro reading, X-dimension
+
+###tBodyGyroJerk-std()-Y
+Class: number
+
+Standard deviation of time-domain body jerk gyro reading, Y-dimension
+
+###tBodyGyroJerk-std()-Z
+Class: number
+
+Standard deviation of time-domain body jerk gyro reading, Z-dimension
+
+###tBodyAccMag-mean()
+Class: number
+
+Mean magnitude of time-domain body acceleration
+
+###tBodyAccMag-std()
+Class: number
+
+Standard deviation of magnitude of time-domain body acceleration
+
+###tGravityAccMag-mean()
+Class: number
+
+Mean magnitude of time-domain gravitational acceleration
+
+###tGravityAccMag-std()
+Class: number
+
+Standard deviation of magnitude of time-domain gravitational acceleration
+
+###tBodyAccJerkMag-mean()
+Class: number
+
+Mean magnitude of time-domain body jerk acceleration
+
+###tBodyAccJerkMag-std()
+Class: number
+
+Standard deviation of magnitude of time-domain body jerk acceleration
+
+###tBodyGyroMag-mean()
+Class: number
+
+Mean magnitude of time-domain body gyro reading
+
+###tBodyGyroMag-std()
+Class: number
+
+Standard deviation of magnitude of time-domain body gyro reading
+
+###tBodyGyroJerkMag-mean()
+Class: number
+
+Mean magnitude of time-domain body gyro jerk reading
+
+###tBodyGyroJerkMag-std()
+Class: number
+
+Standard deviation of magnitude of time-domain body gyro jerk reading
+
+###fBodyAcc-mean()-X
+Class: number
+
+Mean frequency-domain body acceleration, X-dimension
+
+###fBodyAcc-mean()-Y
+Class: number
+
+Mean frequency-domain body acceleration, Y-dimension
+
+###fBodyAcc-mean()-Z
+Class: number
+
+Mean frequency-domain body acceleration, Z-dimension
+
+###fBodyAcc-std()-X
+Class: number
+
+Standard deviation of frequency-domain body acceleration, X-dimension
+
+###fBodyAcc-std()-Y
+Class: number
+
+Standard deviation of frequency-domain body acceleration, X-dimension
+
+###fBodyAcc-std()-Z
+Class: number
+
+Standard deviation of frequency-domain body acceleration, X-dimension
+
+###fBodyAcc-meanFreq()-X
+Class: number
+
+Mean frequency of body acceleration, X-dimension
+
+###fBodyAcc-meanFreq()-Y
+Class: number
+
+Mean frequency of body acceleration, Y-dimension
+
+###fBodyAcc-meanFreq()-Z
+Class: number
+
+Mean frequency of body acceleration, Z-dimension
+
+###fBodyAccJerk-mean()-X
+Class: number
+
+Mean frequency-domain body jerk acceleration, X-dimension
+
+###fBodyAccJerk-mean()-Y
+Class: number
+
+Mean frequency-domain body jerk acceleration, Y-dimension
+
+###fBodyAccJerk-mean()-Z
+Class: number
+
+Mean frequency-domain body jerk acceleration, Z-dimension
+
+###fBodyAccJerk-std()-X
+Class: number
+
+Standard deviation of frequency-domain body jerk acceleration, X-dimension
+
+###fBodyAccJerk-std()-Y
+Class: number
+
+Standard deviation of frequency-domain body jerk acceleration, Y-dimension
+
+###fBodyAccJerk-std()-Z
+Class: number
+
+Standard deviation of frequency-domain body jerk acceleration, Z-dimension
+
+###fBodyAccJerk-meanFreq()-X
+Class: number
+
+Mean frequency of body jerk acceleration, X-dimension
+
+###fBodyAccJerk-meanFreq()-Y
+Class: number
+
+Mean frequency of body jerk acceleration, Y-dimension
+
+###fBodyAccJerk-meanFreq()-Z
+Class: number
+
+Mean frequency of body jerk acceleration, Z-dimension
+
+###fBodyGyro-mean()-X
+Class: number
+
+Mean frequency-domain body gyro reading, X-dimension
+
+###fBodyGyro-mean()-Y
+Class: number
+
+Mean frequency-domain body gyro reading, Y-dimension
+
+###fBodyGyro-mean()-Z
+Class: number
+
+Mean frequency-domain body gyro reading, Z-dimension
+
+###fBodyGyro-std()-X
+Class: number
+
+Standard deviation of frequency-domain body jerk acceleration, X-dimension
+
+###fBodyGyro-std()-Y
+Class: number
+
+Standard deviation of frequency-domain body jerk acceleration, Y-dimension
+
+###fBodyGyro-std()-Z
+Class: number
+
+Standard deviation of frequency-domain body jerk acceleration, Z-dimension
+
+###fBodyGyro-meanFreq()-X
+Class: number
+
+Mean frequency of body gyro reading, X-dimension
+
+###fBodyGyro-meanFreq()-Y
+Class: number
+
+Mean frequency of body gyro reading, Y-dimension
+
+###fBodyGyro-meanFreq()-Z
+Class: number
+
+Mean frequency of body gyro reading, Z-dimension
+
+###fBodyAccMag-mean()
+Class: number
+
+Mean magnitude of frequency-domain body acceleration
+
+###fBodyAccMag-std()
+Class: number
+
+Standard deviation of magnitude of frequency-domain body acceleration
+
+###fBodyAccMag-meanFreq()
+Class: number
+
+Magnitude of mean frequency-domain body acceleration
+
+###fBodyBodyAccJerkMag-mean()
+Class: number
+
+Mean magnitude of frequency-domain body jerk acceleration
+
+###fBodyBodyAccJerkMag-std()
+Class: number
+
+Standard deviation of magnitude of frequency-domain body jerk acceleration
+
+###fBodyBodyAccJerkMag-meanFreq()
+Class: number
+
+Magnitude of mean frequency of body jerk acceleration
+
+###fBodyBodyGyroMag-mean()
+Class: number
+
+Mean magnitude of frequency-domain body gyro reading
+
+###fBodyBodyGyroMag-std()
+Class: number
+
+Standard deviation of magnitude of frequency-domain body gyro reading
+
+###fBodyBodyGyroMag-meanFreq()
+Class: number
+
+Magnitude of mean frequency of body gyro reading
+
+###fBodyBodyGyroJerkMag-mean()
+Class: number
+
+Mean magnitude of frequency-domain body gyro jerk reading
+
+###fBodyBodyGyroJerkMag-std()
+Class: number
+
+Standard deviation of magnitude of frequency-domain body gyro jerk reading
+
+###fBodyBodyGyroJerkMag-meanFreq()
+
+Magnitude of mean frequency of body jerk gyro reading
+
+##Sources
+[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
